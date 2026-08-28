@@ -822,48 +822,6 @@ footer{border-top:1px solid var(--border);background:var(--card);padding:3rem 0 
   </div>
 </div></div></div>
 
-<button id="sideTrigger" class="side-trigger" aria-controls="sidePanel" aria-expanded="false"><span class="dot"></span> Try as / Compose</button>
-<div id="sideOverlay" class="side-overlay"></div>
-<aside id="sidePanel" class="side-panel" aria-hidden="true" aria-label="Storefront controls">
-  <div class="side-panel-head">
-    <div>
-      <h3>Storefront controls</h3>
-      <p>Switch provider archetype or compose the layout</p>
-    </div>
-    <button id="sideClose" class="btn btn-outline btn-sm" aria-label="Close panel">✕</button>
-  </div>
-  <div class="side-panel-body">
-    <!-- BUILDER -->
-    <div id="builderWrap">
-      <div class="builder-bar">
-        <div style="flex:1;min-width:14rem">
-          <span class="lbl">Storefront composer <span id="builderCount" class="pill" style="margin-left:.35rem;font-size:9px;background:var(--bg)"></span></span>
-          <h4>Arrange your storefront</h4>
-          <p>Toggle, reorder, resize & pick variants. Preview is what customers see.</p>
-        </div>
-        <div class="builder-tog" role="tablist" aria-label="Builder mode">
-          <button id="btnPreview" class="on" data-mode="preview">Customer preview</button>
-          <button id="btnEdit" data-mode="edit">Customize</button>
-        </div>
-        <button class="btn btn-outline btn-sm" id="btnResetLayout" title="Reset to defaults">Reset</button>
-      </div>
-      <div id="builderGrid" class="builder-grid" style="display:none"></div>
-      <div id="builderNote" class="builder-note" style="display:none"></div>
-    </div>
-
-    <!-- CONFIG SWITCH -->
-    <div class="cc-card">
-      <div class="cc-head">
-        <span class="lbl">Try this storefront as</span>
-        <h3>One codebase, many providers</h3>
-        <p>Same platform — switch the subset and watch services, delivery modes and navigation adapt live.</p>
-      </div>
-      <div class="cc-opts" id="cfgSwitch"></div>
-      <div class="cc-stats" id="cfgStats"></div>
-    </div>
-  </div>
-</aside>
-
 <!-- ══════════════════════════ SUBNAV ══════════════════════════ -->
 <div class="subnav"><div class="wrap"><nav id="subnav"></nav></div></div>
 
@@ -3421,7 +3379,6 @@ function renderCart(){
       <p>Add services, products or care packages from the Master Storefront to build a mixed cart.</p>
       <div style="display:flex;gap:.5rem;justify-content:center;margin-top:1rem">
         <button class="btn btn-primary btn-sm" data-close>Browse Storefront</button>
-        <button class="btn btn-outline btn-sm" onclick="loadPresetJourney('scenario-e')" style="background:#fff">⚡ Load Preset Cart</button>
       </div>
     </div>`;
     $("#cartSub").textContent = PROVIDER.name;
@@ -3686,14 +3643,14 @@ function renderCheckout(){
           
           <!-- Post Purchase Action Buttons -->
           <div style="display:flex;gap:.375rem;margin-top:.625rem;flex-wrap:wrap">
-            ${g.profile==="F1" || g.profile==="F2" ? `<button class="btn btn-outline btn-sm" onclick="alert('Demo: Calendar invite file (.ics) downloaded for your booking slot!')" style="font-size:10px;height:1.5rem;padding:0 .5rem">📅 Add to Calendar</button>` : ""}
-            ${g.profile==="F1" ? `<button class="btn btn-outline btn-sm" onclick="alert('Demo: Opening Google Maps navigation to 12, 100ft Rd, Indiranagar campus.')" style="font-size:10px;height:1.5rem;padding:0 .5rem">📍 Directions</button>` : ""}
-            ${g.profile==="F2" ? `<button class="btn btn-outline btn-sm" onclick="alert('Demo: Groomer GPS location map loaded. Arrival estimated in 25 mins.')" style="font-size:10px;height:1.5rem;padding:0 .5rem">🛵 Track Groomer</button>` : ""}
-            ${g.profile==="F3" ? `<button class="btn btn-primary btn-sm" onclick="alert('Demo: Telehealth Video consultation room standby mode. Meeting link is active.')" style="font-size:10px;height:1.5rem;padding:0 .5rem;background:#3B82F6">💻 Video Room Standby</button>` : ""}
-            ${g.profile==="F4" ? `<button class="btn btn-outline btn-sm" onclick="alert('Demo: Kennel Cam portal loaded. Live video feed available during stay!')" style="font-size:10px;height:1.5rem;padding:0 .5rem">📹 View Kennel Cam</button>` : ""}
-            ${g.profile==="F6" ? `<button class="btn btn-outline btn-sm" onclick="alert('Demo: Pet Taxi driver contact & vehicle live tracking loaded.')" style="font-size:10px;height:1.5rem;padding:0 .5rem">🚖 Track Pet Taxi</button>` : ""}
-            ${g.profile==="F7" ? `<button class="btn btn-outline btn-sm" onclick="alert('Demo: Product Shipment #SHP-103 status: Out for Delivery by 6 PM.')" style="font-size:10px;height:1.5rem;padding:0 .5rem">📦 Track Delivery</button>` : ""}
-            ${g.totalCredits ? `<button class="btn btn-outline btn-sm" onclick="alert('Demo: Package Balance: ${g.totalCredits} sessions remaining. Valid for 90 days.')" style="font-size:10px;height:1.5rem;padding:0 .5rem">💳 View Credits (${g.totalCredits})</button>` : ""}
+            ${g.profile==="F1" || g.profile==="F2" ? `<button class="btn btn-outline btn-sm" onclick="toast('Calendar Added', 'Calendar invite file (.ics) downloaded for your slot.')" style="font-size:10px;height:1.5rem;padding:0 .5rem">📅 Add to Calendar</button>` : ""}
+            ${g.profile==="F1" ? `<button class="btn btn-outline btn-sm" onclick="toast('Directions', 'Opening maps to 12, 100ft Rd, Indiranagar campus.')" style="font-size:10px;height:1.5rem;padding:0 .5rem">📍 Directions</button>` : ""}
+            ${g.profile==="F2" ? `<button class="btn btn-outline btn-sm" onclick="toast('Tracking Groomer', 'Groomer GPS location map loaded. Arrival estimated in 25 mins.')" style="font-size:10px;height:1.5rem;padding:0 .5rem">🛵 Track Groomer</button>` : ""}
+            ${g.profile==="F3" ? `<button class="btn btn-primary btn-sm" onclick="toast('Video Room Active', 'Telehealth Video consultation room standby mode active.')" style="font-size:10px;height:1.5rem;padding:0 .5rem;background:#3B82F6">💻 Video Room Standby</button>` : ""}
+            ${g.profile==="F4" ? `<button class="btn btn-outline btn-sm" onclick="toast('Kennel Cam Active', 'Kennel Cam live video feed active during stay.')" style="font-size:10px;height:1.5rem;padding:0 .5rem">📹 View Kennel Cam</button>` : ""}
+            ${g.profile==="F6" ? `<button class="btn btn-outline btn-sm" onclick="toast('Tracking Pet Taxi', 'Pet Taxi driver contact & vehicle live tracking loaded.')" style="font-size:10px;height:1.5rem;padding:0 .5rem">🚖 Track Pet Taxi</button>` : ""}
+            ${g.profile==="F7" ? `<button class="btn btn-outline btn-sm" onclick="toast('Tracking Shipment', 'Shipment #SHP-103 status: Out for Delivery by 6 PM.')" style="font-size:10px;height:1.5rem;padding:0 .5rem">📦 Track Delivery</button>` : ""}
+            ${g.totalCredits ? `<button class="btn btn-outline btn-sm" onclick="toast('Package Credits', 'Package Balance: ${g.totalCredits} sessions remaining. Valid for 90 days.')" style="font-size:10px;height:1.5rem;padding:0 .5rem">💳 View Credits (${g.totalCredits})</button>` : ""}
           </div>
         </div>`).join("")}
     </div>` : `
@@ -4411,199 +4368,6 @@ document.addEventListener("keydown", e=>{
    14. BOOT
    ──────────────────────────────────────────────────────────── */
 renderAll();
-
-
-/* ────────────────────────────────────────────────────────────
-   PRESET JOURNEYS & COMMERCE SELF-CHECK
-   ──────────────────────────────────────────────────────────── */
-function loadPresetJourney(scenarioId){
-  if (!scenarioId) return;
-  state.cart = [];
-  state.promo = null;
-
-  if (scenarioId === "scenario-a") {
-    state.cart.push({
-      lineId: uid("li"), kind: "service", refId: "srv-001",
-      title: "Full grooming", category: "Grooming", image: IMG.full,
-      profile: "F1", unitPrice: 999, qty: 1, fixedQty: true,
-      pets: [{ id: "pet-2", name: "Coco", breed: "Shih Tzu", emoji: "🐶" }],
-      when: "Sat, 29 Aug · 11:30 AM", address: "12, 100ft Rd, Indiranagar",
-      addons: ["Nail grinding"], readiness: "READY"
-    });
-    state.cart.push({
-      lineId: uid("li"), kind: "product", refId: "prod-001",
-      title: "Organic Herbal Shampoo", category: "Product", image: IMG.shampoo,
-      profile: "F7", unitPrice: 499, qty: 1, sub: "500 ml", stock: 42,
-      pets: [{ id: "household", name: "Household", breed: "General", emoji: "🏡" }],
-      address: "Home (Flat 402, Koramangala)", readiness: "READY"
-    });
-    toast("Preset Loaded", "Scenario A: Simple (Coco Grooming + Shampoo)");
-
-  } else if (scenarioId === "scenario-b") {
-    state.cart.push({
-      lineId: uid("li"), kind: "service", refId: "srv-007",
-      title: "Vaccination & deworming", category: "Veterinary", image: IMG.vet,
-      profile: "F2", unitPrice: 2198, qty: 1, fixedQty: true,
-      pets: [
-        { id: "pet-1", name: "Bruno", breed: "Golden Retriever", emoji: "🐕" },
-        { id: "pet-4", name: "Max", breed: "Labrador", emoji: "🦮" }
-      ],
-      when: "Sun, 30 Aug · 3:00 PM", address: "Home (Flat 402, Koramangala)",
-      addons: ["Deworming booster"], readiness: "READY"
-    });
-    state.cart.push({
-      lineId: uid("li"), kind: "service", refId: "srv-001",
-      title: "Full grooming", category: "Grooming", image: IMG.full,
-      profile: "F1", unitPrice: 999, qty: 1, fixedQty: true,
-      pets: [{ id: "pet-2", name: "Coco", breed: "Shih Tzu", emoji: "🐶" }],
-      when: "Sat, 29 Aug · 11:30 AM", address: "Indiranagar Campus",
-      addons: [], readiness: "READY"
-    });
-    state.cart.push({
-      lineId: uid("li"), kind: "service", refId: "srv-008",
-      title: "Online vet consultation", category: "Veterinary", image: IMG.consult,
-      profile: "F3", unitPrice: 499, qty: 1, fixedQty: true,
-      pets: [{ id: "pet-3", name: "Luna", breed: "Persian", emoji: "🐈" }],
-      when: "Mon, 31 Aug · 5:00 PM", address: "Online Video Room",
-      topics: "Dry coat & hairball check", readiness: "READY"
-    });
-    toast("Preset Loaded", "Scenario B: Multi-Pet Household Care");
-
-  } else if (scenarioId === "scenario-c") {
-    state.cart.push({
-      lineId: uid("li"), kind: "service", refId: "srv-013",
-      title: "Overnight boarding", category: "Boarding", image: IMG.boarding,
-      profile: "F4", unitPrice: 6300, qty: 1, fixedQty: true, nights: 3,
-      pets: [
-        { id: "pet-1", name: "Bruno", breed: "Golden Retriever", emoji: "🐕" },
-        { id: "pet-2", name: "Coco", breed: "Shih Tzu", emoji: "🐶" }
-      ],
-      when: "Sep 4 → Sep 7 (3 nights)", address: "Campus Climate-Controlled Wing",
-      addons: ["Daily brushing"], readiness: "READY"
-    });
-    state.cart.push({
-      lineId: uid("li"), kind: "service", refId: "srv-021",
-      title: "Pet taxi & transfer", category: "Transport", image: IMG.van,
-      profile: "F6", unitPrice: 699, qty: 1, fixedQty: true,
-      pets: [
-        { id: "pet-1", name: "Bruno", breed: "Golden Retriever", emoji: "🐕" },
-        { id: "pet-2", name: "Coco", breed: "Shih Tzu", emoji: "🐶" }
-      ],
-      when: "Sep 4 · 9:00 AM", address: "▲ Pickup: Home → ▼ Dest: Indiranagar Campus",
-      readiness: "READY"
-    });
-    toast("Preset Loaded", "Scenario C: Boarding Stay + Pet Taxi");
-
-  } else if (scenarioId === "scenario-d") {
-    state.cart.push({
-      lineId: uid("li"), kind: "package", refId: "pkg-002",
-      title: "Bruno Weekly Walking Plan", category: "Package", image: IMG.dog1,
-      profile: "F5", unitPrice: 4288, qty: 1, fixedQty: true, sub: "3 walks/wk · 4 weeks (12 walks)",
-      pets: [{ id: "pet-1", name: "Bruno", breed: "Golden Retriever", emoji: "🐕" }],
-      address: "Home (Flat 402, Koramangala)", readiness: "READY",
-      totalCredits: 12
-    });
-    toast("Preset Loaded", "Scenario D: Bruno Recurring Walking Plan");
-
-  } else if (scenarioId === "scenario-e" || scenarioId === "scenario-g") {
-    state.cart.push({
-      lineId: uid("li"), kind: "service", refId: "srv-001",
-      title: "Full grooming", category: "Grooming", image: IMG.full,
-      profile: "F1", unitPrice: 999, qty: 1, fixedQty: true,
-      pets: [{ id: "pet-2", name: "Coco", breed: "Shih Tzu", emoji: "🐶" }],
-      when: "Sat, 29 Aug · 11:30 AM", address: "Indiranagar Campus",
-      addons: ["Blueberry facial scrub"], readiness: "READY"
-    });
-    state.cart.push({
-      lineId: uid("li"), kind: "service", refId: "srv-007",
-      title: "Vaccination & deworming", category: "Veterinary", image: IMG.vet,
-      profile: "F2", unitPrice: 2198, qty: 1, fixedQty: true,
-      pets: [
-        { id: "pet-1", name: "Bruno", breed: "Golden Retriever", emoji: "🐕" },
-        { id: "pet-4", name: "Max", breed: "Labrador", emoji: "🦮" }
-      ],
-      when: "Sun, 30 Aug · 3:00 PM", address: "Home (Flat 402, Koramangala)",
-      addons: [], readiness: "READY"
-    });
-    state.cart.push({
-      lineId: uid("li"), kind: "service", refId: "srv-008",
-      title: "Online vet consultation", category: "Veterinary", image: IMG.consult,
-      profile: "F3", unitPrice: 499, qty: 1, fixedQty: true,
-      pets: [{ id: "pet-3", name: "Luna", breed: "Persian", emoji: "🐈" }],
-      when: "Mon, 31 Aug · 5:00 PM", address: "Online Video Room",
-      readiness: "READY"
-    });
-    state.cart.push({
-      lineId: uid("li"), kind: "service", refId: "srv-013",
-      title: "Overnight boarding", category: "Boarding", image: IMG.boarding,
-      profile: "F4", unitPrice: 6300, qty: 1, fixedQty: true, nights: 3,
-      pets: [
-        { id: "pet-1", name: "Bruno", breed: "Golden Retriever", emoji: "🐕" },
-        { id: "pet-2", name: "Coco", breed: "Shih Tzu", emoji: "🐶" }
-      ],
-      when: "Sep 4 → Sep 7 (3 nights)", address: "Campus Climate-Controlled Wing",
-      readiness: "READY"
-    });
-    state.cart.push({
-      lineId: uid("li"), kind: "product", refId: "prod-001",
-      title: "Organic Herbal Shampoo", category: "Product", image: IMG.shampoo,
-      profile: "F7", unitPrice: 499, qty: 2, sub: "500 ml", stock: 42,
-      pets: [{ id: "household", name: "Household", breed: "General", emoji: "🏡" }],
-      address: "Home (Flat 402, Koramangala)", readiness: "READY"
-    });
-    state.cart.push({
-      lineId: uid("li"), kind: "service", refId: "srv-031",
-      title: "Pet relocation request", category: "Custom", image: IMG.van,
-      profile: "F8", unitPrice: 0, qty: 1, fixedQty: true,
-      pets: [{ id: "pet-1", name: "Bruno", breed: "Golden Retriever", emoji: "🐕" }],
-      when: "Target date: Oct 15", address: "Bengaluru → Mumbai relocation",
-      topics: "Doorstep crate pickup & flight transit", readiness: "PRICE_PENDING"
-    });
-    toast("Preset Loaded", "Scenario E/G: Mixed Master Household Cart");
-
-  } else if (scenarioId === "scenario-f") {
-    loadPresetJourney("scenario-a");
-    setTimeout(() => {
-      openCheckout();
-      toast("Payment Failure QA", "Click 'Simulate Payment FAILURE / RETRY' to test failure UX.");
-    }, 400);
-    return;
-  }
-
-  syncCart();
-  openSheet($("#cartSheet"));
-}
-
-function runCommerceSelfCheck(){
-  const reports = [];
-  let numPassed = 0;
-
-  const totalServices = SERVICES.length;
-  const actionableServices = SERVICES.filter(s => s.options && s.options.length > 0).length;
-  if (totalServices === actionableServices) numPassed++;
-  reports.push(`Services: ${actionableServices}/${totalServices} actionable`);
-
-  const totalProducts = PRODUCTS.length;
-  const actionableProducts = PRODUCTS.filter(p => p.inStock).length;
-  if (totalProducts > 0) numPassed++;
-  reports.push(`Products: ${actionableProducts}/${totalProducts} available`);
-
-  const totalPackages = PACKAGES.length;
-  if (totalPackages === 4) numPassed++;
-  reports.push(`Packages: ${totalPackages}/4 defined & actionable`);
-
-  const activeF = Object.keys(FF).length;
-  if (activeF === 10) numPassed++;
-  reports.push(`Fulfillment Modes: ${activeF}/10 configured`);
-
-  if (MY_PETS.length === 4) numPassed++;
-  reports.push(`Household Pets: ${MY_PETS.length}/4 (Bruno, Coco, Luna, Max)`);
-
-  const summary = `QA Self-Check Passed: ${numPassed}/5 criteria met.\n\n` + reports.join("\n");
-  alert("PETAPEX COMMERCE PROTOTYPE QA SELF-CHECK\n==========================================\n" + summary);
-  console.log("COMMERCE SELF-CHECK PASSED:", reports);
-}
-
 </script>
 
 <!-- CUSTOMER PROFILE & ADDRESSES MODAL -->
