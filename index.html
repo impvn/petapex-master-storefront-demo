@@ -703,41 +703,6 @@ footer{border-top:1px solid var(--border);background:var(--card);padding:3rem 0 
 </style>
 </head>
 <body>
-
-<!-- ══════════════════════════ NAVBAR ══════════════════════════ -->
-
-<div class="demo-strip" style="background:#1E293B;color:#F8FAFC;padding:.4rem 1rem;font-size:11px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;border-bottom:1px solid #334155;z-index:45;position:relative">
-  <div style="display:flex;align-items:center;gap:.6rem;flex-wrap:wrap">
-    <span class="pill" style="background:#3B82F6;color:#fff;font-weight:800;padding:2px 8px;font-size:10px">COMMERCE PROTOTYPE V1</span>
-    <span><b>Customer Household:</b> Pankaj Sharma (Indiranagar, BLR)</span>
-    <span style="opacity:.6">|</span>
-    <div style="display:flex;gap:.3rem" id="topPetBadges">
-      <span class="pill" style="background:rgba(255,255,255,.15);color:#fff;font-size:10px">🐕 Bruno (Golden)</span>
-      <span class="pill" style="background:rgba(255,255,255,.15);color:#fff;font-size:10px">🐶 Coco (Shih Tzu)</span>
-      <span class="pill" style="background:rgba(255,255,255,.15);color:#fff;font-size:10px">🐈 Luna (Persian)</span>
-      <span class="pill" style="background:rgba(255,255,255,.15);color:#fff;font-size:10px">🦮 Max (Lab)</span>
-    </div>
-  </div>
-  <div style="display:flex;align-items:center;gap:.4rem;flex-wrap:wrap">
-    <select id="presetJourneySelect" onchange="loadPresetJourney(this.value)" style="background:#0F172A;color:#F8FAFC;border:1px solid #475569;border-radius:.4rem;padding:3px 8px;font-size:10.5px;font-weight:600;cursor:pointer">
-      <option value="">⚡ Load Preset Customer Journey…</option>
-      <option value="scenario-a">Scenario A: Simple (Coco Grooming + Shampoo)</option>
-      <option value="scenario-b">Scenario B: Multi-Pet Care (Bruno+Max Vet, Coco Grooming, Luna Consult)</option>
-      <option value="scenario-c">Scenario C: Stay + Transport (Bruno+Coco Boarding + Pet Taxi)</option>
-      <option value="scenario-d">Scenario D: Recurring Care (Bruno Walking Plan)</option>
-      <option value="scenario-e">Scenario E: Mixed Master (F1–F10 Complete Superset)</option>
-      <option value="scenario-f">Scenario F: Payment Failure Test</option>
-      <option value="scenario-g">Scenario G: All Pets Household Care</option>
-    </select>
-    <button class="btn btn-outline btn-sm" onclick="openCustomerProfileModal()" style="height:1.6rem;padding:0 .5rem;font-size:10px;background:#334155;color:#fff;border-color:#475569">📜 Profile &amp; Addresses</button>
-    <button class="btn btn-primary btn-sm" onclick="runCommerceSelfCheck()" style="height:1.6rem;padding:0 .5rem;font-size:10px;background:#059669">🔍 QA Self-Check</button>
-  </div>
-</div>
-
-<div class="topstrip">
-  PetApex verified wellness campus — salon · vet · boarding · training &amp; more &nbsp;|&nbsp; Use code <b>FIRSTPAW20</b> for 20% off your first grooming
-</div>
-
 <header class="site">
   <div class="wrap navrow">
     <div style="display:flex;align-items:center;gap:1.5rem">
