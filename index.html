@@ -3497,6 +3497,32 @@ function renderCart(){
    ──────────────────────────────────────────────────────────── */
 const checkout = { step:"details", name:CUSTOMER_PROFILE.name, phone:CUSTOMER_PROFILE.phone, email:CUSTOMER_PROFILE.email, pay:"UPI", busy:false, error:null, receipt:null, viewTab:"units" };
 
+function validateCheckout(){
+  const nameInp = $("#ckName");
+  const phoneInp = $("#ckPhone");
+  const emailInp = $("#ckEmail");
+
+  const name = nameInp ? nameInp.value.trim() : checkout.name;
+  const phone = phoneInp ? phoneInp.value.trim() : checkout.phone;
+  const email = emailInp ? emailInp.value.trim() : checkout.email;
+
+  if(!name){
+    toast("Name required", "Please enter your contact name.", true);
+    if(nameInp) nameInp.focus();
+    return false;
+  }
+  if(!phone || phone.length < 10){
+    toast("Phone required", "Please enter a valid 10-digit mobile number.", true);
+    if(phoneInp) phoneInp.focus();
+    return false;
+  }
+
+  checkout.name = name;
+  checkout.phone = phone;
+  checkout.email = email;
+  return true;
+}
+
 function openCheckout(){
   checkout.step="details"; checkout.error=null; checkout.receipt=null; checkout.viewTab="units";
   renderCheckout();
